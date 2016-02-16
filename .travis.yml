@@ -7,8 +7,8 @@ addons:
     packages:
       - sshpass
 after_success:
-  - mkdir build
-  - mv * build
-  - tar -czf package.tgz build
+  - mkdir dist
+  - mv * dist
+  - tar -czf package.tgz dist
   - export SSHPASS=$DEPLOY_PASS
   - sshpass -e scp package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH -o stricthostkeychecking=no
