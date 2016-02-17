@@ -8,7 +8,6 @@ addons:
       - sshpass
 before_script:
   - npm install -g gulp
-script: gulp
 after_success:
   - gulp build
   - mkdir build
