@@ -6,10 +6,17 @@ addons:
   apt:
     packages:
       - sshpass
+before_script:
+  - npm install -g gulp
+script: gulp
 after_success:
-  - mkdir dist
-  - cp * dist
-  - tar -czf package.tgz dist
+  - gulp build
+  - mkdir build
+  - cp package.json build
+  - cp node_modules/angular-ui-router/release/angular-ui-router.min.js www
+  - cp -R server build
+  - cp -R www build
+  - tar -czf package.tgz build
   - export SSHPASS=$DEPLOY_PASS
   - sshpass -e scp -o stricthostkeychecking=no package.tgz $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
   - sshpass -e ssh $DEPLOY_USER@$DEPLOY_HOST $DEPLOY_PATH/deploy.sh
