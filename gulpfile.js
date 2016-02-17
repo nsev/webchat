@@ -47,10 +47,12 @@ gulp.task('tpl', [], function () {
     .pipe(jade({
       
     }))
-    .pipe(templateCache())
-    .pipe(sourcemaps.init())
-    .pipe(concat(filenames.webchatTpl))
-    .pipe(sourcemaps.write())
+    .pipe(templateCache(filenames.webchatTpl, {
+      module: 'webchat.tpl'
+    }))
+    // .pipe(sourcemaps.init())
+    // .pipe(concat(filenames.webchatTpl))
+    // .pipe(sourcemaps.write())
     .pipe(gulp.dest(dests.scripts));
 });
 

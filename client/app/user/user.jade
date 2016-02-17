@@ -1,0 +1,7 @@
+.row 
+  .col-lg-12
+    form(ng-submit="user.storeUsername(user.username)", name="")
+      .input-group
+        input.form-control(type='text', placeholder='username', ng-model="user.username")
+        span.input-group-btn
+          button.btn.btn-default(type='submit') Enter chat
