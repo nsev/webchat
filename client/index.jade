@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    title Webchat
+    link(href='/main.css', rel='stylesheet')
+  body
+    ul#messages
+    form(action='')
+      input#m(autocomplete='off')
+      button Send
+  script(src='/socket.io/socket.io.js')
+  script(src='http://code.jquery.com/jquery-1.11.1.js')
+  script(src='/webchat.js')
+  script(src='/webchat-tpl.js')

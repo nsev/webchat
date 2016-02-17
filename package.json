@@ -1,9 +1,20 @@
 {
   "name": "webchat",
-  "version": "0.0.1",
-  "description": "my first socket.io app",
+  "version": "1.0.0",
+  "description": "testing stuff",
   "dependencies": {
     "express": "^4.10.2",
-    "socket.io": "^1.4.5"
+    "socket.io": "^1.4.5",
+    "angular": "^1.5.0",
+    "gulp-stylus": "^2.3.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-concat": "^2.6.0",
+    "del": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-angular-templatecache": "^1.8.0",
+    "gulp-uglify": "^1.5.2"
   }
 }
