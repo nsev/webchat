@@ -1,11 +1,10 @@
 section#chat-window
   section#chat-messages
-    ul#messages
-      .list-group.message
-        li.list-group-item(href='#' ng-repeat="message in chat.messages")
-          small.message-sender.list-group-item-heading.text-primary(ng-bind="::message.sender")
-          small.message-time.list-group-item-heading.text-warning(ng-bind="::message.sentTimeStamp | date:'medium'")
-          p.message-content.list-group-item-text(ng-bind="::message.message")
+    ul#messages.list-group.message(ws-autoscroll="")
+      li.list-group-item(href='#' ng-repeat="message in chat.messages")
+        small.message-sender.list-group-item-heading.text-primary(ng-bind="::message.sender")
+        small.message-time.list-group-item-heading.text-warning(ng-bind="::message.sentTimeStamp | date:'medium'")
+        p.message-content.list-group-item-text(ng-bind="::message.message")
 
   section#chat-input
     .row 
