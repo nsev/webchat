@@ -4,15 +4,16 @@ angular.module('webchat').factory('NotificationService', ['VisibilityService', f
 
   NotificationService.init = function () {
     if (!Notification) {
-
-    }
-    if (Notification.permission !== "granted") {
-      Notification.requestPermission();
+      alert("Download a better browser :)")
+    }else{
+      if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+      }
     }
   };
 
   NotificationService.showDesktopNotification = function (title, iconPath, body) {
-    if (VisibilityService.isHidden()) {
+    if (VisibilityService.isHidden() && Notification) {
       var notification = new Notification(title, {
         icon: iconPath,
         body: body,
