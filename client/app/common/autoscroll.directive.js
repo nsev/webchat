@@ -3,14 +3,13 @@ angular.module('webchat').directive('wsAutoscroll', [function () {
   return {
     restrict: 'A',
     link: function (scope, iElement, iAttrs) {
-      scope.$watch(function(){
+      scope.$watch(function () {
         return iElement[0].scrollHeight;
-      },function(newVal){
+      }, function (newVal) {
         var lastElm = $(iElement).children().last()
-        if(lastElm[0] != null){
+        if (lastElm[0] != null) {
           lastElm[0].scrollIntoView(true);
         }
-
       });
     }
   };

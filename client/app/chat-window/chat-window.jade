@@ -5,12 +5,5 @@ section#chat-window
         small.message-sender.list-group-item-heading.text-primary(ng-bind="::message.sender")
         small.message-time.list-group-item-heading.text-warning(ng-bind="::message.sentTimeStamp | date:'medium'")
         p.message-content.list-group-item-text(ng-bind="::message.message")
-
-  section#chat-input
-    .row 
-      .col-lg-12
-        form(ng-submit="chat.sendMessage(chat.message)", name="")
-          .input-group
-            input.form-control(type='text', placeholder='type something', ng-model="chat.message")
-            span.input-group-btn
-              button.btn.btn-default(type='submit') Send
+  ws-chat-input
+  

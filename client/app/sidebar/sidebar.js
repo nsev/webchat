@@ -1,10 +1,6 @@
-function SidebarController() {
-
-}
-
 angular.module('webchat').component('wsSidebar', {
   templateUrl: 'sidebar/sidebar.html',
-  controller: SidebarController,
+  controller: 'SidebarController as sidebar',
   bindings: {
   }
 });

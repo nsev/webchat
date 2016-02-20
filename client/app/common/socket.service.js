@@ -1,3 +1,4 @@
 angular.module('webchat').factory('SocketService', [function() {
-  return io();
+  var ios = io();
+  return ios;
 }]);

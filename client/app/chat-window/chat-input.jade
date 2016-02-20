@@ -1,0 +1,8 @@
+section#chat-input
+  .row 
+    .col-lg-12
+      form(ng-submit="input.sendMessage(input.message)", name="")
+        .input-group
+          input.form-control(type='text', placeholder='type something', ng-model="input.message")
+          span.input-group-btn
+            button.btn.btn-default(type='submit') Send

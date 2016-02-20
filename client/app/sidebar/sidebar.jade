@@ -1,1 +1,4 @@
 section#sidebar
+  ul.list-group
+    li.list-group-item(ng-repeat="user in sidebar.users")
+      span(ng-bind="::user.username")

@@ -1,4 +1,5 @@
 var express = require('express');
+var lodash = require('lodash');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
@@ -6,17 +7,37 @@ var io = require('socket.io')(http);
 var webroot = 'www';
 var public = webroot;
 
+var users = [];
+
+function buildUserListForClient(){
+  return lodash.map(lodash.cloneDeep(users), function(user){
+    delete user['socket'];
+    return user;
+  });
+}
+
 app.use(express.static(public));
 
 app.get('/', function (req, res) {
-  res.sendFile('/index.html', {'root': webroot});
+  res.sendFile('/index.html', { 'root': webroot });
 });
 
 io.on('connection', function (socket) {
-  console.log('a user connected');
-  socket.on('chat message', function(msg){
+
+  socket.on('chat message', function (msg) {
     msg.sentTimeStamp = Date.now();
     io.emit('chat message', msg);
+  });
+
+  socket.on('store user', function (user) {
+    user.socket = socket.id;
+    users.push(user);
+    io.emit('user joined', buildUserListForClient());
+  });
+
+  socket.on('disconnect', function () {
+    users = lodash.reject(users, { 'socket': socket.id});
+    io.emit('user left', buildUserListForClient());
   });
 });
 

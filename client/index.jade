@@ -12,7 +12,7 @@ html(ng-app="webchat")
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
   body
     ws-sidebar
-    div(ui-view="")
+    div#main-content(ui-view="")
   script(src='http://code.jquery.com/jquery-1.11.1.js')
   script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js')
   script(src='/socket.io/socket.io.js')
