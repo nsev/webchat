@@ -1,4 +1,8 @@
 section#sidebar
   ul.list-group
+    li.list-group-item
+      input(type="checkbox" ng-model="sidebar.user.settings.dnd" ng-change="sidebar.updateUserSetting('dnd', sidebar.user.settings.dnd)") 
+      span Disable desktop notifications
+  ul.list-group
     li.list-group-item(ng-repeat="user in sidebar.users")
       span(ng-bind="::user.username")

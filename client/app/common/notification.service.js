@@ -1,5 +1,5 @@
 //https://stackoverflow.com/questions/2271156/chrome-desktop-notification-example
-angular.module('webchat').factory('NotificationService', ['VisibilityService', function (VisibilityService) {
+angular.module('webchat').factory('NotificationService', ['VisibilityService', 'UserService', function (VisibilityService, UserService) {
   var NotificationService = {};
 
   NotificationService.init = function () {
@@ -13,7 +13,7 @@ angular.module('webchat').factory('NotificationService', ['VisibilityService', f
   };
 
   NotificationService.showDesktopNotification = function (title, iconPath, body) {
-    if (VisibilityService.isHidden() && Notification) {
+    if (VisibilityService.isHidden() && Notification && !UserService.getUser().settings.dnd) {
       var notification = new Notification(title, {
         icon: iconPath,
         body: body,

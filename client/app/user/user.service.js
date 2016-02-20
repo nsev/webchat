@@ -2,7 +2,10 @@ angular.module('webchat').factory('UserService', ['$state', 'SocketService', fun
   var UserService = {};
 
   var user = {
-    name: null
+    name: null,
+    settings: {
+      dnd : false
+    }
   };
 
   SocketService.on('disconnected', function(){
@@ -20,6 +23,14 @@ angular.module('webchat').factory('UserService', ['$state', 'SocketService', fun
     SocketService.emit('store user', {
       username: username
     });
+  };
+
+  UserService.updateSetting = function(setting, value){
+    user.settings[setting] = value;
+  };
+
+  UserService.getUser = function(){
+    return user;
   };
 
   UserService.getUsername = function () {
