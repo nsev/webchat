@@ -33,10 +33,10 @@ angular.module('webchat').controller('SidebarController', ['SocketService', 'Not
       });
     });
 
-    function init(){
+    // function init(){
 
-    }
+    // }
 
-    init();
+    // init();
   }
 ]);

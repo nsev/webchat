@@ -8,6 +8,14 @@ var webroot = 'www';
 var public = webroot;
 
 var users = [];
+var messages = [];
+
+function buildMessageHistoryForClient(timeRangeInMillis){
+  return lodash.filter(messages, function(message){
+    var cutoff = Date.now();
+    return message.sentTimeStamp >= cutoff - timeRangeInMillis;
+  });
+}
 
 function buildUserListForClient(){
   return lodash.map(lodash.cloneDeep(users), function(user){
@@ -26,6 +34,7 @@ io.on('connection', function (socket) {
 
   socket.on('chat message', function (msg) {
     msg.sentTimeStamp = Date.now();
+    messages.push(msg);
     io.emit('chat message', msg);
   });
 
@@ -33,6 +42,7 @@ io.on('connection', function (socket) {
     user.socket = socket.id;
     users.push(user);
     io.emit('user joined', buildUserListForClient());
+    io.to(socket.id).emit('chat history', buildMessageHistoryForClient(3600000));
   });
 
   socket.on('disconnect', function () {
