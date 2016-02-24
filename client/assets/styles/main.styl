@@ -38,26 +38,13 @@ html, body
   margin 0
   padding 0
 
-#messages li 
-  padding 5px 10px
-
-#messages li:nth-child(odd) 
-  background #eee
-  
-.message-sender
-  font-size 0.8em
-  margin-right 0.2em
-.message-time
-  font-size 0.8em
-  margin-left 0.2em
-// .message-content 
-
 #chat-messages
   overflow-y auto
+  overflow-x hidden
   position absolute
   top 0
   width 100%
-  bottom 35px
+  bottom 51px
 
 #chat-input 
   background-color chat-input-color
@@ -66,6 +53,25 @@ html, body
   position absolute
   bottom 0
   width 100%
+
+.chat-message
+  margin 0px 5px 8px 5px
+  padding 5px 2px 5px 5px
+  border 1px solid chat-input-border-color
+  
+#messages li:nth-child(odd) 
+  background #eee
+  
+.message-sender
+  font-size 0.8em
+  margin-right 0.2em
+  font-family Calibri
+
+.message-time
+  font-size 0.8em
+  margin-left 0.2em
+  font-family Calibri
+  
   
 @media (min-width: 750px)
 

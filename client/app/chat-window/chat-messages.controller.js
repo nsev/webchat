@@ -15,8 +15,6 @@ angular.module('webchat').controller('ChatMessagesController', ['NotificationSer
       $scope.$apply(function () {
         console.log(messages);
         vm.messages = messages;
-        // vm.messages.push(messages);
-        // NotificationService.showDesktopNotification('Message from ' + msg.sender, null, msg.message);
       });
     });
   }

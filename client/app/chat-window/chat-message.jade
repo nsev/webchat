@@ -1,0 +1,9 @@
+li.chat-message(href='#')
+  .row
+    .col-xs-12
+      small.message-sender.pull-left(ng-bind="::message.message.sender")
+      small.message-time.text-warning.pull-right(ng-bind="::message.message.sentTimeStamp | date:'HH:mm:ss'")
+  .row
+    .col-xs-12
+      span.message-content(ng-bind="::message.message.message")
+      //- small.message-time.text-warning.pull-right(ng-bind="::message.message.sentTimeStamp | date:'HH:mm:ss'")
